@@ -24,24 +24,18 @@ class MyApp extends StatefulWidget {
     int notifId = 0;
 
     Beacons.backgroundMonitoringEvents().listen((event) {
-      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-          new FlutterLocalNotificationsPlugin();
-      InitializationSettingsAndroid initializationSettingsAndroid =
-          new InitializationSettingsAndroid('app_icon');
-      InitializationSettingsIOS initializationSettingsIOS =
-          new InitializationSettingsIOS();
+      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+      InitializationSettingsAndroid initializationSettingsAndroid = new InitializationSettingsAndroid('app_icon');
+      InitializationSettingsIOS initializationSettingsIOS = new InitializationSettingsIOS();
       InitializationSettings initializationSettings =
-          new InitializationSettings(
-              initializationSettingsAndroid, initializationSettingsIOS);
+          new InitializationSettings(initializationSettingsAndroid, initializationSettingsIOS);
       flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
       NotificationDetailsAndroid androidPlatformChannelSpecifics =
-          new NotificationDetailsAndroid('your channel id', 'your channel name',
-              'your channel description');
-      NotificationDetailsIOS iOSPlatformChannelSpecifics =
-          new NotificationDetailsIOS();
-      NotificationDetails platformChannelSpecifics = new NotificationDetails(
-          androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+          new NotificationDetailsAndroid('your channel id', 'your channel name', 'your channel description');
+      NotificationDetailsIOS iOSPlatformChannelSpecifics = new NotificationDetailsIOS();
+      NotificationDetails platformChannelSpecifics =
+          new NotificationDetails(androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
       flutterLocalNotificationsPlugin.show(
         ++notifId,
         event.type.toString(),
@@ -69,15 +63,15 @@ class _MyAppState extends State<MyApp> {
         tabBar: new CupertinoTabBar(
           items: <BottomNavigationBarItem>[
             new BottomNavigationBarItem(
-              title: new Text('Track'),
+              label: 'Track',
               icon: new Icon(Icons.location_searching),
             ),
             new BottomNavigationBarItem(
-              title: new Text('Monitoring'),
+              label: 'Monitoring',
               icon: new Icon(Icons.settings_remote),
             ),
             new BottomNavigationBarItem(
-              title: new Text('Settings'),
+              label: 'Settings',
               icon: new Icon(Icons.settings_input_antenna),
             ),
           ],
