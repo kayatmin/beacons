@@ -77,21 +77,19 @@ class _ListTabState extends State<ListTab> {
       body: new Column(
         children: <Widget>[
           new Header(
-            regionIdentifier: 'test',
+            regionIdentifier: 'Cubeacon',
             running: _running,
             onStart: _onStart,
             onStop: _onStop,
           ),
           new Expanded(
             child: new ListView(
-              children: ListTile
-                  .divideTiles(
-                    context: context,
-                    tiles: _results
-                        .map((location) => new _Item(result: location))
-                        .toList(),
-                  )
-                  .toList(),
+              children: ListTile.divideTiles(
+                context: context,
+                tiles: _results
+                    .map((location) => new _Item(result: location))
+                    .toList(),
+              ).toList(),
             ),
           ),
         ],
@@ -122,8 +120,7 @@ class _Item extends StatelessWidget {
         height: 3.0,
       ),
       new Text(
-        'Elapsed time: ${result.elapsedTimeSeconds == 0 ? '< 1' : result
-            .elapsedTimeSeconds}s',
+        'Elapsed time: ${result.elapsedTimeSeconds == 0 ? '< 1' : result.elapsedTimeSeconds}s',
         style: const TextStyle(fontSize: 12.0, color: Colors.grey),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,

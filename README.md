@@ -139,8 +139,8 @@ Ranging and monitoring APIs are designed as reactive streams.
 ```dart
 Beacons.ranging(
   region: new BeaconRegionIBeacon(
-    identifier: 'test',
-    proximityUUID: '7da11b71-6f6a-4b6d-81c0-8abd031e6113',
+    identifier: 'Cubeacon',
+    proximityUUID: 'CB10023F-A318-3394-4199-A8730C7C1AEC',
   ),
   inBackground: false, // continue the ranging operation in background or not, see below
 ).listen((result) {
@@ -160,8 +160,8 @@ Ranging beacons while the app is terminated is not supported by the OS. For this
 ```dart
 Beacons.monitoring(
   region: new BeaconRegionIBeacon(
-    identifier: 'test',
-    proximityUUID: '7da11b71-6f6a-4b6d-81c0-8abd031e6113',
+    identifier: 'Cubeacon',
+    proximityUUID: 'CB10023F-A318-3394-4199-A8730C7C1AEC',
   ),
   inBackground: false, // continue the monitoring operation in background or not, see below
 ).listen((result) {

@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Header extends StatefulWidget {
-  const Header({Key key, this.regionIdentifier, this.running, this.onStart, this.onStop}) : super(key: key);
+  const Header(
+      {Key key, this.regionIdentifier, this.running, this.onStart, this.onStop})
+      : super(key: key);
 
   final String regionIdentifier;
   final bool running;
@@ -37,8 +39,8 @@ class _HeaderState extends State<Header> {
 
     _id1Controller = TextEditingController(
       text: _formType == FormType.iBeacon
-          ? '7da11b71-6f6a-4b6d-81c0-8abd031e6113'
-          : 'C336AA38-54BB-483B-AE75-3BA707855035',
+          ? 'CB10023F-A318-3394-4199-A8730C7C1AEC'
+          : 'CB10023F-A318-3394-4199-A8730C7C1AEC',
     );
     _id2Controller = TextEditingController();
     _id3Controller = TextEditingController();
@@ -69,7 +71,8 @@ class _HeaderState extends State<Header> {
           }
         }
       }
-      BeaconRegion region = BeaconRegion(identifier: widget.regionIdentifier, ids: ids);
+      BeaconRegion region =
+          BeaconRegion(identifier: widget.regionIdentifier, ids: ids);
 
       // ignore: missing_enum_constant_in_switch
       switch (_formType) {
@@ -104,8 +107,12 @@ class _HeaderState extends State<Header> {
                   child: new RadioListTile(
                 value: FormType.generic,
                 groupValue: _formType,
-                onChanged: widget.running ? null : (Platform.isAndroid ? _onFormTypeChanged : null),
-                title: new Text(Platform.isAndroid ? 'Generic' : 'Generic (not supported on iOS)'),
+                onChanged: widget.running
+                    ? null
+                    : (Platform.isAndroid ? _onFormTypeChanged : null),
+                title: new Text(Platform.isAndroid
+                    ? 'Generic'
+                    : 'Generic (not supported on iOS)'),
               )),
               new Flexible(
                   child: new RadioListTile(
@@ -183,7 +190,8 @@ enum FormType { generic, iBeacon }
 class _TextFieldDecoration extends InputDecoration {
   const _TextFieldDecoration()
       : super(
-          contentPadding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0),
           border: const OutlineInputBorder(
             borderRadius: const BorderRadius.all(
               const Radius.circular(5.0),
@@ -197,7 +205,12 @@ class _TextFieldDecoration extends InputDecoration {
 }
 
 class _FormGeneric extends StatelessWidget {
-  const _FormGeneric({Key key, this.running, this.id1Controller, this.id2Controller, this.id3Controller})
+  const _FormGeneric(
+      {Key key,
+      this.running,
+      this.id1Controller,
+      this.id2Controller,
+      this.id3Controller})
       : super(key: key);
 
   final bool running;
@@ -213,7 +226,8 @@ class _FormGeneric extends StatelessWidget {
         new TextFormField(
           enabled: !running,
           controller: id1Controller,
-          decoration: const _TextFieldDecoration().copyWith(hintText: 'Id 1 (optional)'),
+          decoration: const _TextFieldDecoration()
+              .copyWith(hintText: 'Id 1 (optional)'),
         ),
         new SizedBox(
           height: 10.0,
@@ -221,7 +235,8 @@ class _FormGeneric extends StatelessWidget {
         new TextFormField(
           enabled: !running,
           controller: id2Controller,
-          decoration: const _TextFieldDecoration().copyWith(hintText: 'Id 2 (optional)'),
+          decoration: const _TextFieldDecoration()
+              .copyWith(hintText: 'Id 2 (optional)'),
         ),
         new SizedBox(
           height: 10.0,
@@ -229,7 +244,8 @@ class _FormGeneric extends StatelessWidget {
         new TextFormField(
           enabled: !running,
           controller: id3Controller,
-          decoration: const _TextFieldDecoration().copyWith(hintText: 'Id 3 (optional)'),
+          decoration: const _TextFieldDecoration()
+              .copyWith(hintText: 'Id 3 (optional)'),
         ),
         new SizedBox(
           height: 10.0,
@@ -240,7 +256,12 @@ class _FormGeneric extends StatelessWidget {
 }
 
 class _FormIBeacon extends StatelessWidget {
-  const _FormIBeacon({Key key, this.running, this.id1Controller, this.id2Controller, this.id3Controller})
+  const _FormIBeacon(
+      {Key key,
+      this.running,
+      this.id1Controller,
+      this.id2Controller,
+      this.id3Controller})
       : super(key: key);
 
   final bool running;
@@ -274,7 +295,8 @@ class _FormIBeacon extends StatelessWidget {
               child: new TextFormField(
                 enabled: !running,
                 controller: id2Controller,
-                decoration: const _TextFieldDecoration().copyWith(hintText: 'Major (optional)'),
+                decoration: const _TextFieldDecoration()
+                    .copyWith(hintText: 'Major (optional)'),
               ),
             ),
             new SizedBox(
@@ -284,7 +306,8 @@ class _FormIBeacon extends StatelessWidget {
               child: new TextFormField(
                 enabled: !running,
                 controller: id3Controller,
-                decoration: const _TextFieldDecoration().copyWith(hintText: 'Minor (optional)'),
+                decoration: const _TextFieldDecoration()
+                    .copyWith(hintText: 'Minor (optional)'),
               ),
             ),
           ],
